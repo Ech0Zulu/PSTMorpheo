@@ -4,15 +4,15 @@ using UnityEngine;
 public class ButtonSys : MonoBehaviour
 {
     [SerializeField]
-    private GameObject button; // Bouton physique
-    private LightSys lightSystem; // Référence au système de lumière
-    private ArduinoSys arduinoSystem; // Référence au système Arduino
+    private GameObject button; // Physical Button
+    private LightSys lightSystem; // Light System Reference
+    private ArduinoSys arduinoSystem; // Arduino System Reference
 
-    public float activationThreshold = 1.07f; // Seuil de position pour détecter l'appui
+    public float activationThreshold = 1.07f; // Activation Threshold
 
-    private bool isPressed = false; // État actuel du bouton
+    private bool isPressed = false; // Button Actual State
 
-    private bool toggle = false; // État de la lampe
+    private bool toggle = false; // Lamp Actual State
 
     private void Start()
     {
@@ -23,18 +23,18 @@ public class ButtonSys : MonoBehaviour
     {
         float y = button.transform.position.y;
 
-        // Vérifie si le bouton vient juste d'être pressé
+        // Check if the button has been pressed
         if (y <= activationThreshold && !isPressed)
         {
-            isPressed = true; // Verrouille l'état en tant que "pressé"
-            toggle = !toggle; // Bascule l'état de la lampe
+            isPressed = true; // Lock in pressed mode
+            toggle = !toggle; // Switch lamp state
             lightSystem.SetLightState(toggle);
             arduinoSystem.SendToArduino(toggle);
         }
-        // Vérifie si le bouton revient à sa position d'origine
+        // Check if the button went to it's original position
         else if (y > activationThreshold && isPressed)
         {
-            isPressed = false; // Réinitialise l'état pour permettre un nouveau basculement
+            isPressed = false; // Reset state
         }
     }
 }
