@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-enum State
+public enum State
 {
     UP = 0,
     DOWN = 1,
     MIDDLEUP = 2,
     MIDDLEDOWN = 3,
+    TRANSITING = 4,
 }
 
 public class GameSys : MonoBehaviour
@@ -25,7 +26,7 @@ public class GameSys : MonoBehaviour
 
     private float m_curTimer = 0f;
     private float m_curTime = 0f;
-    private State m_state = State.DOWN;
+    public State m_state = State.DOWN;
     private float m_moleSizeY = 0f;
 
     private void Start()
@@ -49,7 +50,7 @@ public class GameSys : MonoBehaviour
         if (m_state == State.DOWN && m_curTime >= m_curTimer) // if the mole is hidden and has to shown
         {
                 m_state = State.MIDDLEUP;
-                m_curTime = 0;
+                m_curTime = -1;
         }
         else if (m_state == State.UP) // if the mole is shown
         {
@@ -59,31 +60,68 @@ public class GameSys : MonoBehaviour
             if (m_curTime >= m_curTimer)
             {
                 m_state = State.MIDDLEDOWN;
-                m_curTime = 0;
+                m_curTime = -1;
             }
             //else wait
         }
-        else // else the mole has to go up or down
+        if (m_state == State.MIDDLEUP || m_state == State.MIDDLEDOWN)// else the mole has to go up or down
         {
             // chose a random new position
             int pos = UnityEngine.Random.Range(0, m_spawns.Count);
             Transform newPos = m_spawns[pos].transform;
+
             if (m_state == State.MIDDLEUP) // if the mole is going up
             {
-                // set the new position and rise it
-                m_mole.transform.position = newPos.position + new Vector3(0, m_moleSizeY / 2f, 0);
+                // set the new position and rise the mole
+                m_mole.transform.position = newPos.position;
+                StartCoroutine(MoveMole(newPos.position + new Vector3(0, m_moleSizeY / 2f, 0), .2f));
                 m_state = State.UP;
+
                 // set the new random up timer
-                m_curTimer = UnityEngine.Random.Range(m_upTime.x, m_upTime.y);
+                if (m_curTime < 0f)
+                {
+                    m_curTimer = UnityEngine.Random.Range(m_upTime.x, m_upTime.y);
+                    m_curTime = 0f;
+                    //Debug.Log("up time : " + m_curTimer);
+                }
             }
             else // if the mole is going down
             {
-                // set the new position and lower it
-                m_mole.transform.position = newPos.position - new Vector3(0, m_moleSizeY / 2f, 0);
+                // lower the mole
+                StartCoroutine(MoveMole(m_mole.transform.position - new Vector3(0, m_moleSizeY, 0), .2f));
                 m_state = State.DOWN;
                 // set the new random down timer
-                m_curTimer = UnityEngine.Random.Range(m_downTime.x, m_downTime.y);
+                if (m_curTime < 0f)
+                {
+                    m_curTimer = UnityEngine.Random.Range(m_downTime.x, m_downTime.y);
+                    m_curTime = 0f;
+                    //Debug.Log("down time : " + m_curTimer);
+                }
             }
         }
     }
+
+    IEnumerator MoveMole(Vector3 targetPosition, float duration)
+    {
+        m_state = State.TRANSITING;
+        Vector3 startPosition = m_mole.transform.position;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            m_mole.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+            yield return null;
+        }
+        m_mole.transform.position = targetPosition;
+    }
+
+    public void MoleHit()
+    {
+        if (m_state == State.UP)
+        {
+            m_state = State.MIDDLEDOWN;
+        }
+    }
+
 }

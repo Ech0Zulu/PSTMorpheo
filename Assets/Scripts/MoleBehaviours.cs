@@ -5,29 +5,24 @@ using UnityEngine;
 
 public class Mole : MonoBehaviour
 {
+    public bool hit = false;
+
     [SerializeField]
-    private Vector3 spawnPoint1;
-    [SerializeField]
-    private Vector3 spawnPoint2;
-    [SerializeField]
-    private Vector3 spawnPoint3;
+    private GameObject m_gameSys;
 
-    //tmp public
-    public int score = 0;
-    public float showTime;
-    public float hideTime;
-    public float riseTime;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        if (hit)
+        {
+            hit = false;
+            m_gameSys.GetComponent<GameSys>().MoleHit();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        hit = true;
         
     }
+
 }

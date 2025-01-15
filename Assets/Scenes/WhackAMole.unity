@@ -1013,7 +1013,7 @@ Transform:
   m_GameObject: {fileID: 659993695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.019, z: 0.798}
+  m_LocalPosition: {x: 0, y: 0.959, z: 0.798}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1021,6 +1021,7 @@ Transform:
   - {fileID: 518862554}
   - {fileID: 431544742}
   - {fileID: 762902482}
+  - {fileID: 1722234172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &659993697
@@ -1035,10 +1036,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5a775c1d8ddca4e93223fd887d3925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawns: []
-  m_mole: {fileID: 0}
-  m_upTime: {x: 0, y: 0}
-  m_downTime: {x: 0, y: 0}
+  m_spawns:
+  - {fileID: 202087703}
+  - {fileID: 518862553}
+  - {fileID: 431544741}
+  m_mole: {fileID: 762902481}
+  m_upTime: {x: 1, y: 2}
+  m_downTime: {x: 1, y: 2}
+  m_state: 1
 --- !u!4 &673398892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4993208303295029184, guid: 5eccbf4be2c00e94689ee8062e4e7276,
@@ -1124,6 +1129,8 @@ GameObject:
   - component: {fileID: 762902485}
   - component: {fileID: 762902484}
   - component: {fileID: 762902483}
+  - component: {fileID: 762902487}
+  - component: {fileID: 762902486}
   m_Layer: 0
   m_Name: Mole
   m_TagString: Untagged
@@ -1140,8 +1147,8 @@ Transform:
   m_GameObject: {fileID: 762902481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0395, y: 0.141, z: -0.015499949}
-  m_LocalScale: {x: 0.14263, y: 0.14263, z: 0.14263}
+  m_LocalPosition: {x: -0.0395, y: 0.078, z: -0.015499949}
+  m_LocalScale: {x: 0.14263, y: 0.09252836, z: 0.14263}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 659993696}
@@ -1161,7 +1168,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1219,6 +1226,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762902481}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &762902486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762902481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c55b0e64a6e1104382a69de3e07423a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  m_gameSys: {fileID: 659993695}
+--- !u!54 &762902487
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762902481}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &884306397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,12 +1718,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722234168}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.019, z: 0.798}
-  m_LocalScale: {x: 1.0854938, y: 0.08165422, z: 0.7109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0854938, y: 0.12030933, z: 0.7109}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 659993696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738407700
 GameObject:
@@ -1920,5 +1968,4 @@ SceneRoots:
   - {fileID: 178613503}
   - {fileID: 1738407703}
   - {fileID: 87903144}
-  - {fileID: 1722234172}
   - {fileID: 659993696}
