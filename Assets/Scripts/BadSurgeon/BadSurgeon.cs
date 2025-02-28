@@ -13,13 +13,25 @@ public class BadSurgeon : MonoBehaviour
 
     public float onGoalTime = 2f;
     public float timer = 0f;
-
+    [SerializeField]
+    private ArduinoCom p_arduinoCom;
     [SerializeField]
     private ToolsScript[] c_tools;
-    
+
+    private void Start()
+    {
+        p_arduinoCom = GetComponent<ArduinoCom>();        
+    }
+
     void Update()
     {
-        if (goal < 0) goal = Random.Range(0, 15);
+        if (goal < 0)
+        {
+            p_arduinoCom.SendSig(0);
+            goal = Random.Range(6, 13);
+            p_arduinoCom.SendSig(goal);
+        }
+
         if (touched == goal)
         {
             timer += Time.deltaTime;
@@ -30,6 +42,7 @@ public class BadSurgeon : MonoBehaviour
                 score++;
                 int pointer = Mathf.Clamp(score - 1,0,15);
                 if (c_tools[pointer] != null) c_tools[pointer].SetOn();
+                
             }
         }
         else timer = 0f;

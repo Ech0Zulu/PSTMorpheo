@@ -1144,6 +1144,62 @@ Transform:
   - {fileID: 1719122917}
   m_Father: {fileID: 2012056794}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &118677187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118677189}
+  - component: {fileID: 118677188}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &118677188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118677187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f18dc631ff7a4459cc6e7dc09907be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM12
+  baudRate: 9600
+  SIGNONE: 0
+  SIGALL: 0
+  SIG6: 0
+  SIG7: 0
+  SIG8: 0
+  SIG9: 0
+  SIG10: 0
+  SIG11: 0
+  SIG12: 0
+  SIG13: 0
+--- !u!4 &118677189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118677187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6503402, y: 0.13055456, z: 1.6081077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122253298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301835456}
   - component: {fileID: 301835457}
+  - component: {fileID: 301835458}
   m_Layer: 0
   m_Name: GameSys
   m_TagString: Untagged
@@ -2367,12 +2424,37 @@ MonoBehaviour:
   score: 0
   onGoalTime: 2
   timer: 0
+  p_arduinoCom: {fileID: 0}
   c_tools:
   - {fileID: 537351577}
   - {fileID: 906127868}
   - {fileID: 628401328}
   - {fileID: 1883695476}
   - {fileID: 527678578}
+--- !u!114 &301835458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301835455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f18dc631ff7a4459cc6e7dc09907be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM12
+  baudRate: 9600
+  SIGNONE: 0
+  SIGALL: 0
+  SIG6: 0
+  SIG7: 0
+  SIG8: 0
+  SIG9: 0
+  SIG10: 0
+  SIG11: 0
+  SIG12: 0
+  SIG13: 0
 --- !u!1 &303977951
 GameObject:
   m_ObjectHideFlags: 0
@@ -20590,3 +20672,4 @@ SceneRoots:
   - {fileID: 1907210233}
   - {fileID: 303977952}
   - {fileID: 1571787023}
+  - {fileID: 118677189}
