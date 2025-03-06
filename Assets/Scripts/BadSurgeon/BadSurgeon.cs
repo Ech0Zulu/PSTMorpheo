@@ -40,9 +40,9 @@ public class BadSurgeon : MonoBehaviour
                 goal = -1;
                 timer = 0f;
                 score++;
-                int pointer = Mathf.Clamp(score - 1,0,15);
+                int pointer = Mathf.Clamp(score - 1, 0, 15);
                 if (c_tools[pointer] != null) c_tools[pointer].SetOn();
-                
+
             }
         }
         else timer = 0f;
