@@ -25,7 +25,6 @@ public class CubePicker : MonoBehaviour
         if (other.CompareTag("Hands"))
         {
             string faceTag = gameObject.tag;
-            //Debug.Log(faceTag + " F–Ê‘¤‚ªŠ´’m");
             CubeManager.onClicked(faceTag);
         }
     }
