@@ -17,9 +17,8 @@ public class Hands : MonoBehaviour
     void Update()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = distanceFromCamera;  // カメラからの距離を指定
+        mousePos.z = distanceFromCamera; 
 
-        // カーソル位置に手オブジェクトを移動
         Vector3 worldPos = MainCamera.ScreenToWorldPoint(mousePos);
         transform.position = worldPos;
 
