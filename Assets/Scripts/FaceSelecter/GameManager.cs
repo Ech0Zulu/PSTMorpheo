@@ -19,6 +19,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(string faceTag)
     {
-        Debug.Log("recieved : " + faceTag);
+        //Debug.Log("GameManager‚ªŽó‚¯Žæ‚Á‚½‚æ : " + faceTag);
     }
 }

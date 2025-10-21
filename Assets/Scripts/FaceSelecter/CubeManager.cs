@@ -22,7 +22,7 @@ public class CubeManager : MonoBehaviour
     public void onClicked(string faceTag)
     {
         StartCoroutine(Animations(faceTag));
-        //Debug.Log("CubeManager‚ªŽó‚¯Žæ‚Á‚½‚æ" + faceTag);
+        //Debug.Log("CubeManager:" + faceTag);
         GameManager.StartGame(faceTag);
     }
 
@@ -42,10 +42,10 @@ public class CubeManager : MonoBehaviour
         float t = 0;
         while (t < 1)
         {
-            t += Time.deltaTime / duration;
-            float smooth = Mathf.SmoothStep(0, 1, t);
-            cube.position = Vector3.Lerp(startPos, targetPos, smooth);
-            cube.rotation = Quaternion.Slerp(Rot, targetRot, smooth);
+            t += Time.deltaTime / duration; //calculation
+            float smooth = Mathf.SmoothStep(0, 1, t); //smooth
+            cube.position = Vector3.Lerp(startPos, targetPos, smooth); //position
+            cube.rotation = Quaternion.Slerp(Rot, targetRot, smooth); // rotation
             yield return null;
         }
     }
