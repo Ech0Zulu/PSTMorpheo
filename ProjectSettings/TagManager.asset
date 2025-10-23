@@ -4,14 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - up
-  - down
-  - back
-  - forword
-  - right
-  - left
   - Hands
-  - Hand
+  - Game6
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
   layers:
   - Default
   - TransparentFX
